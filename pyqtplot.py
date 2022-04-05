@@ -1,9 +1,12 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QFileDialog
 from PyQt5 import uic
 from linearInputWindow import Linear_UI
 from expInputWindow import Exponential_UI
 from polyInputWindow import Polynomial_UI
 from functools import partial
+
+from PIL import Image        
+
 import sys
 
 class UI(QMainWindow):
@@ -18,6 +21,8 @@ class UI(QMainWindow):
         self.expButton.clicked.connect(self.openExpInputWindow)
         self.polyButton = self.findChild(QPushButton, "polyButton")
         self.polyButton.clicked.connect(self.openPolyInputWindow)
+        self.openGraphButton = self.findChild(QPushButton, "openGraphButton")
+        self.openGraphButton.clicked.connect(self.openGraph)
     
     def openLinearInputWindow(self):
         self.ui = Linear_UI()
@@ -25,6 +30,11 @@ class UI(QMainWindow):
         self.ui = Exponential_UI()
     def openPolyInputWindow(self):
         self.ui = Polynomial_UI()
+    def openGraph(self):
+        fname = QFileDialog.getOpenFileName(self, "Open Graph", "", "PNG Files (*.png)")
+        if fname:
+            img = Image.open(fname[0])
+            img.show()
 
 def main():
     pyplot = QApplication(sys.argv)

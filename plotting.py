@@ -6,33 +6,31 @@ from PyQt5.QtWidgets import QApplication, QWidget
 
 class Canvas(FigureCanvas):
     def __init__(self, parent):
-        fig, self.ax = plt.subplots(figsize=(5, 4), dpi=50)
-        super().__init__(fig)
+        self.fig, self.ax = plt.subplots(figsize=(5, 4), dpi=50)
+        super().__init__(self.fig)
         self.setParent(parent)
+        self.x = np.linspace(-5,5,100)
 
     def plotLinearGraph(self, yint, slope):
-        x = np.linspace(-5,5,100)
-        y = slope*x+yint
-        self.ax.plot(x,y, "-r", label='y=2x+1')
-        self.ax.set(xlabel='x', ylabel='y',
-               title=f'y={slope}x+{yint}')
-        self.ax.grid()
+        y = slope*self.x+yint
+        funcName = f'y={slope}x+{yint}'
+        self.updateGraphLabel(y, funcName)
 
     def plotExpGraph(self, A, B):
-        x = np.linspace(-5,5,100)
-        y = np.power(A,x) + B
-        self.ax.plot(x,y, "-r", label=f'y={A}^x+{B}')
-        self.ax.set(xlabel='x', ylabel='y',
-               title=f'y={A}^x+{B}')
-        self.ax.grid()
-    
+        y = np.power(A,self.x) + B
+        funcName = f'y={A}^x+{B}'
+        self.updateGraphLabel(y, funcName)
+
     def plotPolyGraph(self, A, B):
-        x = np.linspace(-5,5,100)
-        y = np.power(x,A) + B
-        self.ax.plot(x,y, "-r", label=f'y=x^{A}+{B}')
-        self.ax.set(xlabel='x', ylabel='y',
-               title=f'y=x^{A}+{B}')
+        y = np.power(self.x,A) + B
+        funcName = f'y=x^{A}+{B}'
+        self.updateGraphLabel(y, funcName)
+        
+    def updateGraphLabel(self, y, funcName):
+        self.ax.plot(self.x,y, "-r", label=funcName)
+        self.ax.set(xlabel='x', ylabel='y', title=funcName)
         self.ax.grid()
+        self.fig.savefig(f'{funcName}.png')
 
 class CanvasCreator(QWidget):
     def createLinearCanvas(self, type, data):

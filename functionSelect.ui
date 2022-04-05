@@ -38,10 +38,10 @@
    <widget class="QPushButton" name="linearButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>110</y>
-      <width>200</width>
-      <height>200</height>
+      <x>40</x>
+      <y>140</y>
+      <width>150</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="text">
@@ -51,10 +51,10 @@
    <widget class="QPushButton" name="expButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>110</y>
-      <width>200</width>
-      <height>200</height>
+      <x>230</x>
+      <y>140</y>
+      <width>150</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="text">
@@ -64,14 +64,27 @@
    <widget class="QPushButton" name="polyButton">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>110</y>
-      <width>200</width>
-      <height>200</height>
+      <x>420</x>
+      <y>140</y>
+      <width>150</width>
+      <height>150</height>
      </rect>
     </property>
     <property name="text">
      <string>Polynomial</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openGraphButton">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>140</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Graph</string>
     </property>
    </widget>
   </widget>

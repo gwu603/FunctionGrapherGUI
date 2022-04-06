@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QLin
 from PyQt5 import uic
 from plotting import CanvasCreator
 from functools import partial
+import logging
 import sys
 
 class Linear_UI(QMainWindow):
@@ -14,6 +15,7 @@ class Linear_UI(QMainWindow):
         self.createParamGraphButton.clicked.connect(partial(self.openGraph, "param"))
         self.createPointGraphButton.clicked.connect(partial(self.openGraph, "point"))
         self.show()
+        logging.info("opened linear ui")
 
     def createLocalVar(self):
         self.allInputs = {}
@@ -23,7 +25,7 @@ class Linear_UI(QMainWindow):
         self.allInputs["y1"] = self.findChild(QLineEdit, "y1Input")
         self.allInputs["x2"] = self.findChild(QLineEdit, "x2Input")
         self.allInputs["y2"] = self.findChild(QLineEdit, "y2Input")
-
+    
     def clearAllText(self):
         for key in self.allInputs:
             self.allInputs[key].setText("")
@@ -38,7 +40,11 @@ class Linear_UI(QMainWindow):
         return data
 
     def openGraph(self, type):
+        logging.info("opening linear graph ... ")
         self.ui = CanvasCreator()
         self.ui.createLinearCanvas(type, self.getInputData())
         self.clearAllText()
     
+    def closeEvent(self, event):
+        logging.info("closing linear ui")
+        event.accept()

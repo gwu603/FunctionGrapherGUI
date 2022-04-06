@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QLin
 from PyQt5 import uic
 from plotting import CanvasCreator
 from functools import partial
+import logging
 import sys
 
 class Polynomial_UI(QMainWindow):
@@ -12,6 +13,7 @@ class Polynomial_UI(QMainWindow):
         self.createGraphButton = self.findChild(QPushButton, "createGraph")
         self.createGraphButton.clicked.connect(self.showGraph)
         self.show()
+        logging.info("opened polynomial ui")
 
     def createLocalVar(self):
         self.allInputs = {}
@@ -29,6 +31,11 @@ class Polynomial_UI(QMainWindow):
             self.allInputs[key].setText("")
 
     def showGraph(self):
+        logging.info("opening polynomial graph ...")
         self.ui = CanvasCreator()
         self.ui.createPolynomialCanvas(self.getInputData())
         self.clearAllText()
+    
+    def closeEvent(self, event):
+        logging.info("closing polynomial ui")
+        event.accept()

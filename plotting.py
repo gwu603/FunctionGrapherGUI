@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtWidgets import QApplication, QWidget
+import logging
 
 class Canvas(FigureCanvas):
     def __init__(self, parent):
@@ -41,6 +42,7 @@ class CanvasCreator(QWidget):
             yint, slope = self.calcLinearFunction(data)
             self.chart.plotLinearGraph(yint, slope)
         self.show()
+        logging.info("opened linear graph")
     
     def calcLinearFunction(self, data):
         slope = (data["y2"] - data["y1"]) / (data["x2"] - data["x1"])
@@ -51,8 +53,11 @@ class CanvasCreator(QWidget):
         self.chart = Canvas(self)
         self.chart.plotExpGraph(data["A"], data["B"])
         self.show()
+        logging.info("opened exponential graph")
 
     def createPolynomialCanvas(self, data):
         self.chart = Canvas(self)
         self.chart.plotPolyGraph(data["A"], data["B"])
         self.show()
+        logging.info("opened polynomial graph")
+

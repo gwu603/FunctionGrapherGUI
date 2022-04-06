@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QPushButton, QLin
 from PyQt5 import uic
 from plotting import CanvasCreator
 from functools import partial
+import logging
 import sys
 
 class Exponential_UI(QMainWindow):
@@ -12,6 +13,7 @@ class Exponential_UI(QMainWindow):
         self.createGraphButton = self.findChild(QPushButton, "createGraph")
         self.createGraphButton.clicked.connect(self.showGraph)
         self.show()
+        logging.info("opened exponential ui")
 
     def createLocalVar(self):
         self.allInputs = {}
@@ -29,6 +31,11 @@ class Exponential_UI(QMainWindow):
             self.allInputs[key].setText("")
 
     def showGraph(self):
+        logging.info("opening exponential graph ...")
         self.ui = CanvasCreator()
         self.ui.createExponentialCanvas(self.getInputData())
         self.clearAllText()
+
+    def closeEvent(self, event):
+        logging.info("closing exponential ui")
+        event.accept()

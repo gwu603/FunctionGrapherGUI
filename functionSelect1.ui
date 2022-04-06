@@ -14,24 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="expButton">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>80</y>
-      <width>150</width>
-      <height>150</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Exponential</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="openGraphButton">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>80</y>
+      <x>610</x>
+      <y>130</y>
       <width>150</width>
       <height>150</height>
      </rect>
@@ -43,8 +30,8 @@
    <widget class="QPushButton" name="polyButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>80</y>
+      <x>420</x>
+      <y>130</y>
       <width>150</width>
       <height>150</height>
      </rect>
@@ -53,11 +40,37 @@
      <string>Polynomial</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="linearButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>130</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Linear</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="expButton">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>130</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Exponential</string>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>10</y>
+      <x>20</x>
+      <y>60</y>
       <width>740</width>
       <height>30</height>
      </rect>
@@ -74,34 +87,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="linearButton">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>150</width>
-      <height>150</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Linear</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="logger">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>250</y>
-      <width>721</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -112,6 +98,7 @@
     </rect>
    </property>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
